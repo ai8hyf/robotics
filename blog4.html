@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Swarm & NLP</title>
+    <title>Blog Post #4</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -54,9 +54,6 @@
                     <li>
                         <a href="about.html">About</a>
                     </li>
-                    <!-- <li>
-                        <a href="post.html">Sample Post</a>
-                    </li> -->
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
@@ -69,82 +66,50 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Swarm Control with NLP technology</h1>
-                        <span class="subheading">A Project for CNIT 581-SDR / Spring 2021 </span>
-                        <hr class="small">
-                        <span class="subheading">Team: Roman Ibrahimov & Yifei Hu</span>
+                    <div class="post-heading">
+                        <h1>Blog Post #4</h1>
+                        <h2 class="subheading">Integration and engineering issues</h2>
+                        <span class="meta">Posted by <a href="#">Yifei</a> on April 23, 2021</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="blog4.html">
-                        <h2 class="post-title">
-                            Blog Post #4
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Integration and engineering issues
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Yifei Hu</a> on April 23, 2021</p>
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>
+                        We are finalizing each component in this project at this point. During the past 2 weeks, we encountered several issues regarding integration and engineering.
+                    </p>
+                    <p>
+                        Both the Robotics and NLP modules use Python as the programming language. However, some Python libraries are not compatible with the Python version (3.8) we are using. For example, we want to use a Python library called "PyAudio" to access the microphone, but the library only works with Python 3.6 and before. For Python 3.8, there are not libraries that can directly connect to the microphone. Automatic Speech Recognition (ASR) is an important function and the beginning point in our whole pipeline. We had to come up with other solutions to record the user's voice input.
+                    </p>
+                    <img class="img-responsive" src="img/pyaudio.png" alt="PyAudio simple didn't work on our environment." >
+                    <span style="color: gray;"><small>Screenshot: Trying to install PyAudio</small></span>
+                    <p>
+                        As there are many other languages supporting microphone access, we also need to consider the compatibility issues for different operating system. Roman is using Linux and I (Yifei) am using Windows 10. Things that work on my computer may not work on Linux. The solution we come up with is using Web as the front-end to record user's voice input. Therefore, we created a very simple recorder using HTML and Javascript. Both Windows and Linux can use Chrome browser to run this Web application. 
+                    </p>
+                    <img class="img-responsive" src="img/recorder.png" alt="The Web front-end." width="100%">
+                    <span style="color: gray;"><small>Screenshot: The Web front-end</small></span>
+                    <p>
+                        Another challenge we had was the communication between Javascript and Python. We can record audio from the Javascript front-end, but how should we pass the audio file to our Python back-end? There are some solutions (like Flask) which require us to set up a web server and host the Python scripts. None of us are familiar with Flask and we don't have much time to experiment on new frameworks. Giving the time limit, we finally decided to save the audio file in a certain folder and let the Python script to scan the files in the folder every N seconds. If there's a new audio file in the foler, the new file will be passed to the pipeline and finally trigger some actions. The solution is not very elegant, but we are proud of ourselves for finding a feasible shortcut.
+                    </p>
+                    <img class="img-responsive" src="img/commu.png" alt="The Web front-end." width="100%">
+                    <span style="color: gray;"><small>Screenshot: communication between Python and Javascript</small></span>
+                    <p>
+                        Roman is still working on migrating the code in simulator to read drones. He had 3 drones ready for this project. We will have a meeting in the lab during the weekend to put everything together. During our testing with the NLP modules, we realized the pre-trained language models were not perfect for this use case. We do not have data to fine-tune the model, but we are looking forward to keeping optimizing it in the future.
+                    </p>
                 </div>
-                <hr>
-
-                <div class="post-preview">
-                    <a href="blog3.html">
-                        <h2 class="post-title">
-                            Blog Post #3
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Progress in Robotics and NLP
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Yifei Hu</a> on April 8, 2021</p>
-                </div>
-                <hr>
-
-                <div class="post-preview">
-                    <a href="proposal.html">
-                        <h2 class="post-title">
-                            Blog Post #2
-                        </h2>
-                        <h3 class="post-subtitle">
-                            The Proposal
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Yifei Hu</a> on March 25, 2021</p>
-                </div>
-                <hr>
-
-                <div class="post-preview">
-                    <a href="about-the-team.html">
-                        <h2 class="post-title">
-                            Blog Post #1
-                        </h2>
-                        <h3 class="post-subtitle">
-                            The Team
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Yifei Hu</a> on March 12, 2021</p>
-                </div>
-                <hr>
-                
-
-
             </div>
         </div>
-    </div>
+    </article>
 
     <hr>
 
